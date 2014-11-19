@@ -19,7 +19,7 @@ module.exports = new Package('dgeni-example', [
   log.level = 'info';
 
   // Specify the base path used when resolving relative paths to source and output files
-  readFilesProcessor.basePath = path.resolve(__dirname, '..');
+  readFilesProcessor.basePath = path.resolve(__dirname, '../..');
 
   // Specify collections of source files that should contain the documentation to extract
   readFilesProcessor.sourceFiles = [
