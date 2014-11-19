@@ -5,7 +5,7 @@ var Package = require('dgeni').Package;
 
 // Create and export a new Dgeni package called dgeni-example. This package depends upon
 // the jsdoc and nunjucks packages defined in the dgeni-packages npm module.
-module.exports = new Package('dgeni-example', [
+module.exports = new Package('dgeni-ngdoc-example', [
   require('dgeni-packages/jsdoc'),
   require('dgeni-packages/ngdoc'),
   require('dgeni-packages/nunjucks'),
@@ -44,4 +44,20 @@ module.exports = new Package('dgeni-example', [
 
   // Specify where the writeFilesProcessor will write our generated doc files
   writeFilesProcessor.outputFolder  = 'dist_docs';
+})
+.config(function(generateExamplesProcessor, generateProtractorTestsProcessor) {
+	var deployments = [
+		{
+			name: 'default',
+			examples: {
+				commonFiles: {
+					scripts: ['../angular.js']
+				},
+				dependencyPath: '../../../'
+			}
+		}
+	];
+
+	generateExamplesProcessor.deployments = deployments;
+	generateProtractorTestsProcessor.deployments = deployments;
 });
