@@ -8,7 +8,8 @@ var Package = require('dgeni').Package;
 module.exports = new Package('dgeni-example', [
   require('dgeni-packages/jsdoc'),
   require('dgeni-packages/ngdoc'),
-  require('dgeni-packages/nunjucks')
+  require('dgeni-packages/nunjucks'),
+  require('dgeni-packages/examples')
 ])
 
 // Configure our dgeni-example package. We can ask the Dgeni dependency injector
