@@ -25,14 +25,11 @@ module.exports = new Package('dgeni-ngdoc-example', [
   // Specify collections of source files that should contain the documentation to extract
   readFilesProcessor.sourceFiles = [
     {
-      // Process all js files in `src` and its subfolders ...
       include: 'src/**/*.js',
-      // ... except for this one!
-      exclude: 'src/do-not-read.js',
-      // When calculating the relative path to these files use this as the base path.
-      // So `src/foo/bar.js` will have relative path of `foo/bar.js`
+      //exclude: 'src/do-not-read.js',
       basePath: 'src'
-    }
+    },
+    { include: 'docs/content/**/*.ngdoc', basePath: 'docs/content' }
   ];
 
   // Add a folder to search for our own templates to use when rendering docs
@@ -45,6 +42,32 @@ module.exports = new Package('dgeni-ngdoc-example', [
   // Specify where the writeFilesProcessor will write our generated doc files
   writeFilesProcessor.outputFolder  = 'dist_docs';
 })
+
+.config(function(computePathsProcessor, computeIdsProcessor){
+
+	computePathsProcessor.pathTemplates.push({
+		docTypes: ['overview'],
+		getPath: function(doc){
+			var docPath = path.dirname(doc.fileInfo.relativePath);
+      if ( doc.fileInfo.baseName !== 'index' ) {
+        docPath = path.join(docPath, doc.fileInfo.baseName);
+      }
+			return docPath;
+		},
+		outputPathTemplate: 'partials/${path}.html'
+	});
+
+	computeIdsProcessor.idTemplates.push({
+		docTypes: ['overview'],
+		getId: function(doc){
+			return doc.fileInfo.baseName;
+		},
+		getAliases: function(doc){
+			return [doc.id];
+		}
+	});
+})
+
 .config(function(generateExamplesProcessor, generateProtractorTestsProcessor) {
 	var deployments = [
 		{
