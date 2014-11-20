@@ -74,7 +74,7 @@ module.exports = new Package('dgeni-ngdoc-example', [
 			name: 'default',
 			examples: {
 				commonFiles: {
-					scripts: ['../angular.js']
+					scripts: ['../../bower_components/angular/angular.js']
 				},
 				dependencyPath: '../../../'
 			}

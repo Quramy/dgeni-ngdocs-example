@@ -12,7 +12,9 @@ function browserSyncInit(baseDir, files, browser) {
   browser = browser === undefined ? 'default' : browser;
 
   var routes = null;
-  if(baseDir === 'src' || (util.isArray(baseDir) && baseDir.indexOf('src') !== -1)) {
+  var isDebug = baseDir === 'src' || (util.isArray(baseDir) && baseDir.indexOf('src') !== -1);
+  var isDoc = baseDir === 'dist_docs' || (util.isArray(baseDir) && baseDir.indexOf('dist_docs') !== -1);
+  if(isDebug || isDoc){
     routes = {
       // Should be '/bower_components': '../bower_components'
       // Waiting for https://github.com/shakyShane/browser-sync/issues/308
@@ -43,6 +45,13 @@ gulp.task('serve', ['watch'], function () {
     'src/{app,components}/**/*.html',
     'src/{app,components}/**/*.js'
   ]);
+});
+
+gulp.task('serve:docs', ['dgeni'], function(){
+  browserSyncInit([
+		'dist_docs',
+		'docs/app'
+	]);
 });
 
 gulp.task('serve:dist', ['build'], function () {
