@@ -51,7 +51,10 @@ module.exports = new Package('dgeni-ngdoc-example', [
 			var docPath = path.dirname(doc.fileInfo.relativePath);
       if ( doc.fileInfo.baseName !== 'index' ) {
         docPath = path.join(docPath, doc.fileInfo.baseName);
-      }
+      }else{
+				return 'index';
+			}
+			console.log(docPath);
 			return docPath;
 		},
 		outputPathTemplate: 'partials/${path}.html'
@@ -60,6 +63,7 @@ module.exports = new Package('dgeni-ngdoc-example', [
 	computeIdsProcessor.idTemplates.push({
 		docTypes: ['overview'],
 		getId: function(doc){
+			console.log(doc);
 			return doc.fileInfo.baseName;
 		},
 		getAliases: function(doc){

@@ -2,17 +2,26 @@
 
 angular.module('dgeniNgdocExampleDocs').controller('DocsCtrl', function($scope, $location){
 	var docs = this;
-	this.currentPath = 'api/dgeniNgdocExample';
+	var basePath = '/';
+
+	docs.changeCurrent = function(newPath){
+		newPath = newPath.replace(new RegExp('^' + basePath), '');
+		if(!newPath.match(/\.html$/)){
+			if(!newPath.match(/\/$/)){
+				newPath = newPath + '/';
+			}
+			newPath = newPath + 'index.html';
+			console.log(newPath);
+		}
+		newPath = 'partials/' + newPath;
+		//console.log(newPath);
+		docs.currentPath = newPath;
+	};
 
 	$scope.$watch(function(){
 		return $location.path();
 	}, function(newPath){
-		if(!newPath.match(/\/$/)){
-			newPath = newPath + '/';
-		}
-		if(!newPath.match(/\.html$/)){
-			console.log(newPath);
-		}
+		docs.changeCurrent(newPath);
 	});
 
 });

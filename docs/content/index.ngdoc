@@ -1,0 +1,12 @@
+@ngdoc overview
+
+@name API TOP
+
+@description
+
+<div class="hero-unit">
+	<h1>hello! NGDOC</h1>
+</div>
+
+## {@link dgeniNgdocExample dgeniNgdocExample (my module)}
+
