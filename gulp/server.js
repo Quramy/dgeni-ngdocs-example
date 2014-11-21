@@ -20,7 +20,15 @@ function browserSyncInit(baseDir, files, browser) {
       // Waiting for https://github.com/shakyShane/browser-sync/issues/308
       '/bower_components': 'bower_components'
     };
-  }
+
+	}
+	if(isDoc){
+		middleware.push(function(req, res, next){
+			if(req.url.match(/^\/api\/.*/)){ req.url = '/index.html'; }
+			next();
+		});
+	}
+
 
   browserSync.instance = browserSync.init(files, {
     startPath: '/index.html',
@@ -47,11 +55,15 @@ gulp.task('serve', ['watch'], function () {
   ]);
 });
 
+gulp.task('bs:relaod', [], function(){
+	browserSync.reload();
+});
+
 gulp.task('serve:docs', ['dgeni'], function(){
   browserSyncInit([
 		'dist_docs',
 		'docs/app'
-	]);
+	], ['dist_docs/**/*', 'docs/app/*.html', 'docs/app/src/**/*']);
 });
 
 gulp.task('serve:dist', ['build'], function () {
@@ -65,3 +77,4 @@ gulp.task('serve:e2e', function () {
 gulp.task('serve:e2e-dist', ['watch'], function () {
   browserSyncInit('dist', null, []);
 });
+

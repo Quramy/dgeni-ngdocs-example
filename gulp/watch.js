@@ -7,3 +7,4 @@ gulp.task('watch', ['wiredep'] ,function () {
   gulp.watch('src/assets/images/**/*', ['images']);
   gulp.watch('bower.json', ['wiredep']);
 });
+

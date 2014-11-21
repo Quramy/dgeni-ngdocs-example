@@ -9,5 +9,10 @@ angular.module('dgeniNgdocExampleDocs', ['ngRoute'])
 	})
 })*/
 .config(function($locationProvider){
-	$locationProvider.html5Mode(true);
+	$locationProvider.hashPrefix('!');
+	$locationProvider.html5Mode({
+		enabled: true,
+		requireBase: true,
+		rewriteLinks: true
+	});
 });
