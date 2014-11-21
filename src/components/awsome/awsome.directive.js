@@ -4,6 +4,7 @@
  * @ngdoc directive
  * @name awsome
  * @restrict A
+ * @module dgeniNgdocExample
  *
  * @description
  *

@@ -4,9 +4,11 @@
 
 @description
 
-<div class="hero-unit">
-	<h1>hello! NGDOC</h1>
+<div class="jumbotron">
+	<h1>Hello ngDoc!</h1>
 </div>
 
 ## {@link dgeniNgdocExample dgeniNgdocExample (my module)}
+
+This is a main module.
 

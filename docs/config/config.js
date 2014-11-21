@@ -60,6 +60,12 @@ module.exports = new Package('dgeni-ngdoc-example', [
 		outputPathTemplate: 'partials/${path}.html'
 	});
 
+  computePathsProcessor.pathTemplates.push({
+    docTypes: ['componentGroup' ],
+    pathTemplate: '${area}/${moduleName}/${groupType}',
+    outputPathTemplate: 'partials/${area}/${moduleName}/${groupType}.html'
+  });
+
 	computeIdsProcessor.idTemplates.push({
 		docTypes: ['overview'],
 		getId: function(doc){
