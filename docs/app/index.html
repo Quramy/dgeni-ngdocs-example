@@ -3,7 +3,15 @@
 	<head>
 		<base href="/" ></base>
 		<title>docs</title>
+
+    <!-- build:css({.tmp,src}) styles/vendor.css -->
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../bower_components/google-code-prettify/src/prettify.css"></script>
+    <!-- bower:css -->
+    <link rel="stylesheet" href="../bower_components/open-sans-fontface/css/open-sans.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
 	</head>
 	<body>
 
@@ -11,13 +19,24 @@
 			<div ng-include="'main.html'"></div>
 		</div>
 
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
     <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/modernizr/modernizr.js"></script>
     <script src="../bower_components/angular/angular.js"></script>
     <script src="../bower_components/angular-route/angular-route.js"></script>
+    <script src="../bower_components/google-code-prettify/src/prettify.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
 
+    <!-- build:js({.tmp,src}) scripts/app.js -->
 		<script src="src/index.js"></script>
 		<script src="src/docs.controller.js"></script>
 
 		<script src="js/nav-data.js"></script>
+    <!-- inject:partials -->
+    <!-- endinject -->
+    <!-- endbuild -->
+
 	</body>
 </html>

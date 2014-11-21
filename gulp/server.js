@@ -14,15 +14,18 @@ function browserSyncInit(baseDir, files, browser) {
   var routes = null;
   var isDebug = baseDir === 'src' || (util.isArray(baseDir) && baseDir.indexOf('src') !== -1);
   var isDoc = baseDir === 'dist_docs' || (util.isArray(baseDir) && baseDir.indexOf('dist_docs') !== -1);
-  if(isDebug || isDoc){
+  if(isDebug){
     routes = {
       // Should be '/bower_components': '../bower_components'
       // Waiting for https://github.com/shakyShane/browser-sync/issues/308
       '/bower_components': 'bower_components'
     };
-
 	}
 	if(isDoc){
+		routes = {
+			'/bower_components': 'docs/bower_components'
+    };
+
 		middleware.push(function(req, res, next){
 			if(req.url.match(/^\/api\/.*/)){ req.url = '/index.html'; }
 			next();
@@ -59,7 +62,7 @@ gulp.task('bs:relaod', [], function(){
 	browserSync.reload();
 });
 
-gulp.task('serve:docs', ['dgeni'], function(){
+gulp.task('serve:docs', ['dgeni', 'wiredep:docs'], function(){
   browserSyncInit([
 		'dist_docs',
 		'docs/app'

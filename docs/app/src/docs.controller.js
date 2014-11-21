@@ -31,3 +31,16 @@ angular.module('dgeniNgdocExampleDocs').controller('DocsCtrl', function($scope, 
 	});
 
 });
+
+angular.module('dgeniNgdocExampleDocs').directive('pre', function(){
+	return {
+		link: function($scope, $elem, $attrs){
+			$elem.addClass('prettyprint');
+			setTimeout(function(){
+				// TODO
+				prettyPrint();
+			}, 0);
+
+		}
+	};
+});
