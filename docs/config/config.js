@@ -12,6 +12,8 @@ module.exports = new Package('dgeni-ngdoc-example', [
   require('dgeni-packages/examples')
 ])
 
+.processor(require('./processors/navigation'))
+
 // Configure our dgeni-example package. We can ask the Dgeni dependency injector
 // to provide us with access to services and processors that we wish to configure
 .config(function(log, readFilesProcessor, templateFinder, writeFilesProcessor) {
