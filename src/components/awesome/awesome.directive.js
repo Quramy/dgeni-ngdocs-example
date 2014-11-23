@@ -18,7 +18,7 @@
         </div>
       </file>
 		 	<file name="script.js">
-        angular.module('awsomeExample', []).controller('ExampleController', function(){
+        angular.module('awsomeExample', ['dgeniNgdocExample']).controller('ExampleController', function(){
           var example = this;
         });
 			</file>
@@ -28,6 +28,6 @@
 angular.module('dgeniNgdocExample').directive('awesome', function(){
 	return{
 		restrict: 'E',
-		template: '<div>Awesome</div>'
+		template: '<div>This is an Awesome!</div>'
 	};
 });
