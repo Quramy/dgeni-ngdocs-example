@@ -1,16 +1,27 @@
-<div class="row">
+<div>
 
-	<div class="col-md-12" ng-show="!docs.currentArea" ng-include="docs.currentPath"></div>
-	
-	<div class="col-md-3" ng-show="docs.currentArea">
-		<h2>{{docs.currentArea.name}}</h2>
-		<ul ng-repeat="navGroup in docs.currentArea.navGroups">
-			<a ng-href="{{navGroup.href}}"><span>{{navGroup.name}}</span></a>
+	<div ng-include="'src/navbar.html'"></div>
 
-			<li ng-repeat="navItem in navGroup.navItems">
-			<a ng-href="{{navItem.href}}"><span>{{navItem.name}}</span></a>
-			</li>
-		</ul>
+	<div class="row">
+
+		<div class="col-md-12" ng-show="!docs.currentArea" ng-include="docs.currentPath"></div>
+
+		<div class="col-md-3" ng-show="docs.currentArea">
+			<ul ng-repeat="navGroup in docs.currentArea.navGroups" class="nav-index-group">
+				<a class="nav-index-group-heading" ng-href="{{navGroup.href}}"><span>{{navGroup.name}}</span></a>
+
+				<li ng-repeat="navItem in navGroup.navItems">
+				<a ng-href="{{navItem.href}}"><span>{{navItem.name}}</span></a>
+				</li>
+			</ul>
+		</div>
+		<div class="col-md-9" ng-show="docs.currentArea" ng-include="docs.currentPath"></div>
 	</div>
-	<div class="col-md-9" ng-show="docs.currentArea" ng-include="docs.currentPath"></div>
+
+  <hr>
+
+  <div class="footer">
+    <p>With ♥ from <a href="https://twitter.com/Quramy">@Quramy</a></p>
+  </div>
+
 </div>

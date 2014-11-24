@@ -11,15 +11,21 @@ angular.module('dgeniNgdocExampleDocs').controller('DocsCtrl', function($scope, 
 		newPath = newPath.replace(new RegExp('^' + basePath), '');
 		area = newPath.split('/')[0];
 		docs.currentArea = DOCS_NAVIGATION[area];
-		if(!newPath.match(/\.html$/)){
-			if(!newPath.match(/\/$/)){
-				newPath = newPath + '/';
+
+		if(newPath === '' || newPath === 'index.html'){
+			docs.currentPath = 'index.html';
+		}else{
+
+			if(!newPath.match(/\.html$/)){
+				/*
+				if(!newPath.match(/\/$/)){
+					newPath = newPath + '/';
+				}*/
+				newPath = newPath + '.html';
 			}
-			newPath = newPath + 'index.html';
-			console.log(newPath);
 		}
 		newPath = 'partials/' + newPath;
-		//console.log(newPath);
+		console.log(newPath);
 		docs.currentPath = newPath;
 
 	};

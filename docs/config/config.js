@@ -48,6 +48,14 @@ module.exports = new Package('dgeni-ngdoc-example', [
 .config(function(computePathsProcessor, computeIdsProcessor){
 
 	computePathsProcessor.pathTemplates.push({
+		docTypes: ['module'],
+		getPath: function (doc) {
+			return doc.area + '/' + doc.name;
+		},
+		outputPathTemplate: 'partials/${path}.html'
+	});
+
+	computePathsProcessor.pathTemplates.push({
 		docTypes: ['overview'],
 		getPath: function(doc){
 			var docPath = path.dirname(doc.fileInfo.relativePath);
