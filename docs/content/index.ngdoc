@@ -5,10 +5,14 @@
 @description
 
 <div class="jumbotron">
-	<h1>Hello ngDoc!</h1>
+	<h1>Hello Docs!</h1>
 </div>
 
-## {@link dgeniNgdocExample dgeniNgdocExample (my module)}
+## Contents
 
-This is a main module.
+### API
+<a href="api">here</a>.
+
+### Guide
+<a href="guide">here</a>.
 

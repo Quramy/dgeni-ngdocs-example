@@ -78,7 +78,7 @@ module.exports = function generateNavigationProcessor(log) {
 		$runBefore: ['rendering-docs'],
 		$process: function (docs) {
 
-			var areas = {};
+			var areas = {}, areaIds = [];
 			var pages = _(docs)
 			.filter(function (it) {
 				return it.area;
@@ -92,6 +92,7 @@ module.exports = function generateNavigationProcessor(log) {
 						name: AREA_NAMES[key] || key,
 						navGroups: mappers[key](pages, key)
 					};
+					areaIds.push(key);
 				}
 			});
 
@@ -101,6 +102,12 @@ module.exports = function generateNavigationProcessor(log) {
 				template: 'nav-data.template.js',
 				outputPath: 'js/nav-data.js',
 				areas: areas
+			});
+
+			docs.push({
+				template: 'area-data.template.js',
+				outputPath: 'js/area-data.js',
+				areaIds: areaIds
 			});
 
 		}

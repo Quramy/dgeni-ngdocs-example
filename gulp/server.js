@@ -11,7 +11,7 @@ var middleware = require('./proxy');
 function browserSyncInit(baseDir, files, browser) {
   browser = browser === undefined ? 'default' : browser;
 
-  var routes = null;
+  var routes = null, forwardIndexPrefix;
   var isDebug = baseDir === 'src' || (util.isArray(baseDir) && baseDir.indexOf('src') !== -1);
   var isDoc = baseDir === 'dist_docs' || (util.isArray(baseDir) && baseDir.indexOf('dist_docs') !== -1);
   if(isDebug){
@@ -26,9 +26,10 @@ function browserSyncInit(baseDir, files, browser) {
 			'/bower_components': 'docs/bower_components'
     };
 
+		forwardIndexPrefix = require('../dist_docs/js/area-data');
 		middleware.push(function(req, res, next){
-			['/api', '/guide'].forEach(function(area){
-				if(req.url === area || req.url.indexOf(area + '/') === 0){
+			forwardIndexPrefix.forEach(function(area){
+				if(req.url === '/' + area || req.url.indexOf('/' + area + '/') === 0){
 					req.url = '/index.html';
 				}
 			});
