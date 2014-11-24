@@ -1,19 +1,35 @@
-.nav-index-group-heading {
-	color: #6F0101;
-	font-weight: bold;
-	font-size: 1.2em;
-	padding: 0;
-	margin: 0;
-	border-bottom: 1px soild #aaa;
-	margin-bottom: 5px;
+
+.naked-list,
+.naked-list ul,
+.naked-list li {
+  list-style:none;
+  margin:0;
+  padding:0;
 }
 
 .nav-index-section a {
-	font-weight: bold;
-	font-family: "Open Sans";
-	color: black!important;
-	margin-top: 10px;
-	display: block;
+  font-weight:bold;
+  font-family: "Open Sans";
+  color:black!important;
+  margin-top:10px;
+  display:block;
 }
 
+.nav-index-group {
+  margin-bottom:20px!important;
+}
+
+.nav-index-group-heading {
+  color:#6F0101;
+  font-weight:bold;
+  font-size:1.2em;
+  padding:0;
+  margin:0;
+  border-bottom:1px soild #aaa;
+  margin-bottom:5px;
+}
+
+.nav-index-group .nav-index-listing.current a {
+  color: #B52E31;
+}
 

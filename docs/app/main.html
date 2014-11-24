@@ -4,24 +4,29 @@
 
 	<div class="row">
 
-		<div class="col-md-12" ng-show="!docs.currentArea" ng-include="docs.currentPath"></div>
+		<div class="col-md-12" ng-show="!docs.currentArea" ng-include="docs.partialPath"></div>
 
 		<div class="col-md-3" ng-show="docs.currentArea">
-			<ul ng-repeat="navGroup in docs.currentArea.navGroups" class="nav-index-group">
+			<ul class="nav-list naked-list">
+				<li ng-repeat="navGroup in docs.currentArea.navGroups" class="nav-index-group">
 				<a class="nav-index-group-heading" ng-href="{{navGroup.href}}"><span>{{navGroup.name}}</span></a>
-
-				<li ng-repeat="navItem in navGroup.navItems">
-				<a ng-href="{{navItem.href}}"><span>{{navItem.name}}</span></a>
+				<ul>
+					<li ng-repeat="navItem in navGroup.navItems" ng-class="docs.navState(navItem)" class="nav-index-listing">
+					<a ng-href="{{navItem.href}}"><span>{{navItem.name}}</span></a>
+					</li>
+				</ul>
 				</li>
 			</ul>
 		</div>
-		<div class="col-md-9" ng-show="docs.currentArea" ng-include="docs.currentPath"></div>
+
+		<div class="col-md-9" ng-show="docs.currentArea" ng-include="docs.partialPath"></div>
+
 	</div>
 
-  <hr>
+	<hr>
 
-  <div class="footer">
-    <p>With ♥ from <a href="https://twitter.com/Quramy">@Quramy</a></p>
-  </div>
+	<div class="footer">
+		<p>With ♥ from <a href="https://twitter.com/Quramy">@Quramy</a></p>
+	</div>
 
 </div>

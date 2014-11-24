@@ -4,14 +4,17 @@ var _ = require('lodash');
 
 module.exports = function generateNavigationProcessor(log) {
 
-	// TODO
-	var debug = log.info;
+	var debug = log.debug;
+
+	var AREA_NAMES = {
+		api: 'API',
+		guide: 'Guide'
+	};
 
 	var mappers = {
 		api: function (pages, key) {
 			var res = [];
 
-			debug('start process area:', key);
 
 			_(pages)
 			.filter('module').groupBy('module').forEach(function (components, moduleName) {
@@ -49,6 +52,24 @@ module.exports = function generateNavigationProcessor(log) {
 			});
 			debug(res);
 			return res;
+		},
+		guide: function (pages, key) {
+			var res = {
+				name: 'Guide',
+				type: 'groups',
+				href: 'guide',
+				navItems: []
+			};
+
+			_(pages).forEach(function (page) {
+				res.navItems.push({
+					name: page.name,
+					type: '',
+					href: page.path
+				});
+			});
+
+			return [res];
 		}
 	};
 
@@ -62,21 +83,13 @@ module.exports = function generateNavigationProcessor(log) {
 			.filter(function (it) {
 				return it.area;
 			});
-			/*
-				 .filter(function(it){
-				 return it.docType !== 'componentGroup';
-				 });
-
-			_(pages).forEach(function (it) {
-				debug(it.name, it.area, it.docType, it.module);
-			});
-		 */
 
 			_(pages).groupBy('area').forEach(function (pages, key) {
+				debug('start process area:', key);
 				if (mappers[key]) {
 					areas[key] = {
 						id: key,
-						name: key,
+						name: AREA_NAMES[key] || key,
 						navGroups: mappers[key](pages, key)
 					};
 				}

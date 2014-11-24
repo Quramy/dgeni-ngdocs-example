@@ -1,15 +1,18 @@
-<nav class="navbar navbar-static-top navbar-inverse" ng-controller="NavbarCtrl">
+<nav class="navbar navbar-static-top navbar-inverse" ng-controller="NavbarCtrl as navbar">
   <div class="navbar-header">
-    <a class="navbar-brand" href="https://github.com/Swiip/generator-gulp-angular">
-      <span class="glyphicon glyphicon-home"></span> Gulp Angular
+    <a class="navbar-brand" href="index.html">
+      <span class="glyphicon glyphicon-home"></span> dgeniNgdocExample Docs
     </a>
   </div>
 
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
     <ul class="nav navbar-nav">
-      <li class="active"><a ng-href="#">Home</a></li>
-      <li><a ng-href="#">API</a></li>
+			<li ng-repeat="area in navbar.areas" ng-class="{active:docs.currentArea.id === area.id}"><a ng-href="{{area.href}}" >{{area.name}}</a></li>
+			<!--
+      <li class="active"><a ng-href="api">API</a></li>
+      <li><a ng-href="guide">Guide</a></li>
       <li><a ng-href="#">Contact</a></li>
+			-->
     </ul>
 
     <ul class="nav navbar-nav navbar-right">

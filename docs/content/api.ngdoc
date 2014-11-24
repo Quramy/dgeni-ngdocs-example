@@ -1,0 +1,14 @@
+@ngdoc overview
+
+@name API Top
+
+@description
+
+<div class="jumbotron">
+	<h1>Hello ngDoc!</h1>
+</div>
+
+## {@link dgeniNgdocExample dgeniNgdocExample (my module)}
+
+This is a main module.
+

@@ -27,35 +27,39 @@ function browserSyncInit(baseDir, files, browser) {
     };
 
 		middleware.push(function(req, res, next){
-			if(req.url.match(/^\/api\/.*/)){ req.url = '/index.html'; }
+			['/api', '/guide'].forEach(function(area){
+				if(req.url === area || req.url.indexOf(area + '/') === 0){
+					req.url = '/index.html';
+				}
+			});
 			next();
 		});
 	}
 
 
-  browserSync.instance = browserSync.init(files, {
-    startPath: '/index.html',
-    server: {
-      baseDir: baseDir,
-      middleware: middleware,
-      routes: routes
-    },
-    browser: browser
-  });
+	browserSync.instance = browserSync.init(files, {
+		startPath: '/index.html',
+		server: {
+			baseDir: baseDir,
+			middleware: middleware,
+			routes: routes
+		},
+		browser: browser
+	});
 
 }
 
 gulp.task('serve', ['watch'], function () {
-  browserSyncInit([
-    'src',
-    '.tmp'
-  ], [
-    '.tmp/{app,components}/**/*.css',
-    'src/assets/images/**/*',
-    'src/*.html',
-    'src/{app,components}/**/*.html',
-    'src/{app,components}/**/*.js'
-  ]);
+	browserSyncInit([
+		'src',
+		'.tmp'
+	], [
+		'.tmp/{app,components}/**/*.css',
+		'src/assets/images/**/*',
+		'src/*.html',
+		'src/{app,components}/**/*.html',
+		'src/{app,components}/**/*.js'
+	]);
 });
 
 gulp.task('bs:relaod', [], function(){
@@ -63,21 +67,21 @@ gulp.task('bs:relaod', [], function(){
 });
 
 gulp.task('serve:docs', ['dgeni', 'wiredep:docs'], function(){
-  browserSyncInit([
+	browserSyncInit([
 		'dist_docs',
 		'docs/app'
 	], ['dist_docs/**/*', 'docs/app/*.html', 'docs/app/src/**/*']);
 });
 
 gulp.task('serve:dist', ['build'], function () {
-  browserSyncInit('dist');
+	browserSyncInit('dist');
 });
 
 gulp.task('serve:e2e', function () {
-  browserSyncInit(['src', '.tmp'], null, []);
+	browserSyncInit(['src', '.tmp'], null, []);
 });
 
 gulp.task('serve:e2e-dist', ['watch'], function () {
-  browserSyncInit('dist', null, []);
+	browserSyncInit('dist', null, []);
 });
 
