@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('dgeniNgdocExampleDocs', ['ngRoute'])
+angular.module('dgeniNgdocExampleDocs', [])
 .config(function($locationProvider){
 		$locationProvider.hashPrefix('!');
 		$locationProvider.html5Mode({

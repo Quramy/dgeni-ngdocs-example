@@ -32,7 +32,6 @@ angular.module('dgeniNgdocExampleDocs').controller('DocsCtrl', function($scope, 
 			}
 		}
 		newPath = 'partials/' + newPath;
-		console.log(newPath, hash);
 
 		docs.currentHash = hash;
 		docs.partialPath = newPath;
