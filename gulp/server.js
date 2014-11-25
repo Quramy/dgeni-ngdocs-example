@@ -8,6 +8,7 @@ var browserSync = require('browser-sync');
 
 var middleware = require('./proxy');
 
+/* modified by Quramy */
 function browserSyncInit(baseDir, files, browser) {
   browser = browser === undefined ? 'default' : browser;
 
@@ -26,6 +27,7 @@ function browserSyncInit(baseDir, files, browser) {
 			'/bower_components': 'docs/bower_components'
     };
 
+		// Read Area prefix data(e.g. ['api', ...]) from dgeni result.
 		forwardIndexPrefix = require('../.tmp_docs/js/area-data');
 		middleware.push(function(req, res, next){
 			forwardIndexPrefix.forEach(function(area){
@@ -67,6 +69,7 @@ gulp.task('bs:relaod', [], function(){
 	browserSync.reload();
 });
 
+/* add by Quramy */
 gulp.task('serve:docs', ['dgeni', 'wiredep:docs'], function(){
 	browserSyncInit([
 		'.tmp_docs',

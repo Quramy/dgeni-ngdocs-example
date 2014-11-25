@@ -22,7 +22,7 @@ angular.module('dgeniNgdocExample').provider('message', function(){
 		 * @ngdoc method
 		 * @name messageProvider#put
 		 * @description
-		 * Put a message to repository.
+		 * Put a message to repository. See also `{@link message#get message#get}`.
 		 *
 		 *
 		 * @param {string} id The message's ID.
