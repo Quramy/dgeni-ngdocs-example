@@ -6,7 +6,7 @@ angular.module('dgeniNgdocExampleDocs').directive('pre', function(){
 		link: function($scope, $elem, $attrs){
 			$elem.addClass('prettyprint');
 			setTimeout(function(){
-				// TODO
+				// TODO replace prettyPrintOne()
 				prettyPrint();
 			}, 0);
 

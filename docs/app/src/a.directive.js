@@ -1,4 +1,3 @@
-
 'use strict';
 
 angular.module('dgeniNgdocExampleDocs').directive('a', function(DOCS_OVERWRITELINK, DOCS_AREA_DATA){
@@ -26,7 +25,6 @@ angular.module('dgeniNgdocExampleDocs').directive('a', function(DOCS_OVERWRITELI
 				newLink = linkCache[link];
 				if(!newLink){
 					if(isRewrite(link)){
-						//console.log(link);
 						newLink = '#+' + link;
 						linkCache[link] = newLink;
 					}

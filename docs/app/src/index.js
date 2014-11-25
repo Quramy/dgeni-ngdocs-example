@@ -1,8 +1,5 @@
 'use strict';
 
-// If you want HASHMODE, leave the following commentout.
-// var DOCS_OVERWRITELINK = true;
-
 angular.module('dgeniNgdocExampleDocs', ['ngRoute'])
 .config(function($locationProvider){
 		$locationProvider.hashPrefix('!');

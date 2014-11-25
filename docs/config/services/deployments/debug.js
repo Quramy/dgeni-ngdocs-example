@@ -6,12 +6,14 @@ module.exports = function debugDeployment() {
 		examples: {
 			commonFiles: {
 				scripts: [
-					'../../bower_components/angular/angular.js',
-					'../../bower_components/angular-route/angular-route.js',
+					'../../deps/jquery/dist/jquery.js',
+					'../../deps/angular/angular.js',
+					'../../deps/angular-route/angular-route.js',
 					'../../dgeniNgdocExample.js'
-				]
+				],
+				stylesheets: []
 			},
-			dependencyPath: '../../../'
+			dependencyPath: '../../deps'
 		}
 	};
 }

@@ -17,10 +17,6 @@ angular.module('dgeniNgdocExampleDocs').controller('DocsCtrl', function($scope, 
 		return res;
 	};
 
-	docs.partialOnLoad = function(){
-
-	};
-
 	docs.changeCurrent = function(newPath, hash){
 		var area
 		docs.currentPath = newPath;
@@ -48,7 +44,6 @@ angular.module('dgeniNgdocExampleDocs').controller('DocsCtrl', function($scope, 
 	});
 
 	$rootScope.$on('$locationChangeStart', function(e, arg){
-		//$rootScope.$broadcast('changePath', $location.path());
 		var pathFragment;
 		if(DOCS_OVERWRITELINK){
 			pathFragment = $location.hash() !== '' ? $location.hash().replace(/^\+/, '').split('#') : ['index'];

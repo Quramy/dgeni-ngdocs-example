@@ -10,7 +10,8 @@ module.exports = function defaultDeployment() {
 					'../../deps/angular/angular.min.js',
 					'../../deps/angular-route/angular-route.min.js',
 					'../../dgeniNgdocExample.js'
-				]
+				],
+				stylesheets: []
 			},
 			dependencyPath: '../../deps'
 		},
