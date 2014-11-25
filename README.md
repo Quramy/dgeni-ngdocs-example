@@ -2,14 +2,12 @@
 
 A sample application with ngDoc.
 
-## How to build
+This app has [dgeni](https://github.com/angular/dgeni) configuration and some gulp tasks to build ngDoc application like AngularJS's document site.
 
-1.
-Clone this repository.
+## Getting started
 
-1. 
-
-```
+```sh
+git clone https://github.com/Quramy/dgeni-ngdocs-example.git
 cd dgeni-ngdoc-example
 npm install
 bower install
@@ -41,5 +39,5 @@ Pacaging ngdoc app to `dist_docs`.
 Run browserSync, and serve `serve:docs` result.
 
 
-And you can also use gulp tasks (https://github.com/Swiip/generator-gulp-angular).
+And you can also use gulp tasks [generator-gulp-angular](https://github.com/Swiip/generator-gulp-angular).
 
