@@ -6,9 +6,7 @@
  * @module dgeniNgdocExample
  * @description
  *
- * # dgeniNgdocExample
- *
- * This is a ngdoc example application.
+ * This is a ngdoc example application module.
  *
  *
  **/

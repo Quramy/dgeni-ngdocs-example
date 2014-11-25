@@ -8,7 +8,7 @@
  *
  * @description
  *
- * It is a greate directive.
+ * It is an awesome directive.
  *
  * @example
  	 <example module="awsomeExample" deps="" animate="false">
