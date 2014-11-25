@@ -41,23 +41,24 @@ gulp.task('html', ['wiredep', 'scripts', 'partials'], function () {
       addPrefix: '../'
     }))
     .pipe(assets = $.useref.assets())
-    .pipe($.rev())
+    //.pipe($.rev())
     .pipe(jsFilter)
     .pipe($.ngAnnotate())
-    .pipe($.uglify({preserveComments: $.uglifySaveLicense}))
+    //.pipe($.uglify({preserveComments: $.uglifySaveLicense}))
     .pipe(jsFilter.restore())
     .pipe(cssFilter)
     .pipe($.csso())
     .pipe(cssFilter.restore())
     .pipe(assets.restore())
     .pipe($.useref())
-    .pipe($.revReplace())
+    //.pipe($.revReplace())
     .pipe(htmlFilter)
+		/*
     .pipe($.minifyHtml({
       empty: true,
       spare: true,
       quotes: true
-    }))
+    }))*/
     .pipe(htmlFilter.restore())
     .pipe(gulp.dest('dist'))
     .pipe($.size());

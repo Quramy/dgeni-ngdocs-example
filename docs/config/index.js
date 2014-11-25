@@ -12,6 +12,8 @@ module.exports = new Package('dgeni-ngdoc-example', [
   require('dgeni-packages/examples')
 ])
 
+.factory(require('./services/deployments/debug'))
+.factory(require('./services/deployments/default'))
 .processor(require('./processors/navigation'))
 
 // Configure our dgeni-example package. We can ask the Dgeni dependency injector
@@ -88,23 +90,8 @@ module.exports = new Package('dgeni-ngdoc-example', [
 	});
 })
 
-.config(function(generateExamplesProcessor, generateProtractorTestsProcessor) {
-	var deployments = [
-		{
-			name: 'default',
-			examples: {
-				commonFiles: {
-					scripts: [
-						'../../bower_components/angular/angular.js',
-						'../../bower_components/angular-route/angular-route.js',
-						'../../dgeniNgdocExample.js'
-					]
-				},
-				dependencyPath: '../../../'
-			}
-		}
-	];
-
+.config(function(generateExamplesProcessor, generateProtractorTestsProcessor, defaultDeployment, debugDeployment) {
+	var deployments = [debugDeployment, defaultDeployment];
 	generateExamplesProcessor.deployments = deployments;
 	generateProtractorTestsProcessor.deployments = deployments;
 });

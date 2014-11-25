@@ -22,7 +22,7 @@ gulp.task('wiredep:docs', function () {
     .pipe(wiredep({
 			bowerJson: require('../docs/bower.json'),
       directory: 'docs/bower_components',
-      exclude: [/bootstrap-sass-official/, /bootstrap.js/],
+      exclude: [/bootstrap-sass-official/, /bootstrap.js/, /open-sans-fontface/],
     }))
     .pipe(gulp.dest('docs/app'));
 });

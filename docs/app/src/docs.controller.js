@@ -51,7 +51,7 @@ angular.module('dgeniNgdocExampleDocs').controller('DocsCtrl', function($scope, 
 		//$rootScope.$broadcast('changePath', $location.path());
 		var pathFragment;
 		if(DOCS_OVERWRITELINK){
-			pathFragment = $location.hash().replace(/^\+/, '').split('#');
+			pathFragment = $location.hash() !== '' ? $location.hash().replace(/^\+/, '').split('#') : ['index'];
 			$rootScope.$broadcast('changePath', pathFragment[0], pathFragment[1]);
 		}else{
 			$rootScope.$broadcast('changePath', $location.path(), $location.hash());

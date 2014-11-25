@@ -24,11 +24,15 @@ function browserSyncInit(baseDir, files, browser) {
 	}
 	if(isDoc){
 		routes = {
-			'/bower_components': 'docs/bower_components'
+			'/bower_components': 'docs/bower_components',
+			'/deps': 'bower_components'
     };
 
 		// Read Area prefix data(e.g. ['api', ...]) from dgeni result.
 		forwardIndexPrefix = require('../.tmp_docs/src/area-data');
+
+		// The following proxy routes a request that has url start with Area prefix to '/index.html',
+		// because we need a correct view when browserSync.reload() is invoked after changing $location.path() .
 		middleware.push(function(req, res, next){
 			forwardIndexPrefix.forEach(function(area){
 				if(req.url === '/' + area || req.url.indexOf('/' + area + '/') === 0){
@@ -65,9 +69,6 @@ gulp.task('serve', ['watch'], function () {
 	]);
 });
 
-gulp.task('bs:relaod', [], function(){
-	browserSync.reload();
-});
 
 /* add by Quramy */
 gulp.task('serve:docs', ['dgeni', 'wiredep:docs'], function(){
@@ -75,6 +76,10 @@ gulp.task('serve:docs', ['dgeni', 'wiredep:docs'], function(){
 		'.tmp_docs',
 		'docs/app'
 	], ['.tmp_docs/**/*', 'docs/app/*.html', 'docs/app/src/**/*']);
+});
+
+gulp.task('serve:docs:dist', ['build:docs'], function(){
+	browserSyncInit('dist_docs');
 });
 
 gulp.task('serve:dist', ['build'], function () {

@@ -4,12 +4,14 @@
 		<base href="/" ></base>
 		<title>docs</title>
 
-    <!-- build:css({.tmp,src}) styles/vendor.css -->
+    <!-- build:css({docs/app,.tmp,src}) styles/vendor.css -->
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="../bower_components/google-code-prettify/src/prettify.css"></script>
+    <link rel="stylesheet" href="../bower_components/open-sans-fontface/open-sans.css" />
     <!-- bower:css -->
-    <link rel="stylesheet" href="../bower_components/open-sans-fontface/css/open-sans.css" />
     <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css({.tmp,src,docs/app}) styles/app.css -->
     <link rel="stylesheet" href="styles/docs.css" />
     <!-- endbuild -->
 
@@ -17,10 +19,10 @@
 	<body>
 
 		<div class="container" ng-controller="DocsCtrl as docs">
-			<div ng-include="'main.html'"></div>
+			<div ng-include="'src/main.html'"></div>
 		</div>
 
-    <!-- build:js scripts/vendor.js -->
+		<!-- build:js({docs/app,.tmp_docs}) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="../bower_components/jquery/dist/jquery.js"></script>
     <script src="../bower_components/modernizr/modernizr.js"></script>
@@ -30,7 +32,9 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-    <!-- build:js({.tmp,src}) scripts/app.js -->
+    <!-- build:js({docs/app,.tmp_docs}) scripts/app.js -->
+		<!-- inject:env -->
+    <!-- endinject -->
 		<script src="src/index.js"></script>
 		<script src="src/pre.directive.js"></script>
 		<script src="src/a.directive.js"></script>
@@ -39,6 +43,7 @@
 		<script src="src/area-data.js"></script>
 		<script src="src/nav-data.js"></script>
     <!-- inject:partials -->
+    <!-- angular templates will be automaticaly converted in js and inserted here -->
     <!-- endinject -->
     <!-- endbuild -->
 
