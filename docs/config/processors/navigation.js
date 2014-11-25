@@ -100,13 +100,13 @@ module.exports = function generateNavigationProcessor(log) {
 				docType: 'nav-data',
 				id: 'nav-data',
 				template: 'nav-data.template.js',
-				outputPath: 'js/nav-data.js',
+				outputPath: 'src/nav-data.js',
 				areas: areas
 			});
 
 			docs.push({
 				template: 'area-data.template.js',
-				outputPath: 'js/area-data.js',
+				outputPath: 'src/area-data.js',
 				areaIds: areaIds
 			});
 

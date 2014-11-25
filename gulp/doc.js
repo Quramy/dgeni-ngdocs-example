@@ -22,4 +22,28 @@ gulp.task('dgeni', ['build:script_docs'], function() {
   }
 });
 
+gulp.task('partials:docs', [], function () {
+	return gulp.src(['.tmp_docs/partials/**/*.html'])
+	/*
+		.pipe($.minifyHtml({
+			empty: true,
+			spare: true,
+			quotes: true
+		}))*/
+    .pipe($.ngHtml2js({
+      moduleName: 'dgeniNgdocExampleDocs'
+    }))
+		.pipe(gulp.dest('.tmp_docs/partials'))
+		.pipe($.size());
+});
+
+gulp.task('html:docs', ['partials:docs'], function(){
+	return gulp.src(['docs/app/index.html'])
+		.pipe(gulp.dest('dist_docs'));
+});
+
+gulp.task('build:docs', ['dgeni', 'html:docs'], function() {
+	return gulp.src(['.tmp_docs/**/*'])
+		.pipe(gulp.dest('dist_docs'));
+});
 

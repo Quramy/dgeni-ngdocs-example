@@ -12,5 +12,4 @@ angular.module('dgeniNgdocExampleDocs').directive('pre', function(){
 
 		}
 	};
-})
-.value('DOCS_OVERWRITELINK', true);
+});

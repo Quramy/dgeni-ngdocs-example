@@ -4,7 +4,7 @@
 angular.module('dgeniNgdocExampleDocs').directive('a', function(DOCS_OVERWRITELINK, DOCS_AREA_DATA){
 	var linkCache = {};
 	var isRewrite = function(link){
-		var res = link.indexOf('#!') === -1;
+		var res = link.indexOf('#+') === -1;
 		if(!res){
 			return false;
 		}
@@ -27,7 +27,7 @@ angular.module('dgeniNgdocExampleDocs').directive('a', function(DOCS_OVERWRITELI
 				if(!newLink){
 					if(isRewrite(link)){
 						//console.log(link);
-						newLink = '#!' + link;
+						newLink = '#+' + link;
 						linkCache[link] = newLink;
 					}
 				}

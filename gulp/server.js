@@ -28,7 +28,7 @@ function browserSyncInit(baseDir, files, browser) {
     };
 
 		// Read Area prefix data(e.g. ['api', ...]) from dgeni result.
-		forwardIndexPrefix = require('../.tmp_docs/js/area-data');
+		forwardIndexPrefix = require('../.tmp_docs/src/area-data');
 		middleware.push(function(req, res, next){
 			forwardIndexPrefix.forEach(function(area){
 				if(req.url === '/' + area || req.url.indexOf('/' + area + '/') === 0){

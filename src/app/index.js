@@ -8,6 +8,10 @@
  *
  * This is a ngdoc example application module.
  *
+ * 1. aaaa
+ * 
+ * 1. bbbb
+ *
  *
  **/
 angular.module('dgeniNgdocExample', ['ngRoute'])
