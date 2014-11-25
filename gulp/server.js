@@ -13,7 +13,7 @@ function browserSyncInit(baseDir, files, browser) {
 
   var routes = null, forwardIndexPrefix;
   var isDebug = baseDir === 'src' || (util.isArray(baseDir) && baseDir.indexOf('src') !== -1);
-  var isDoc = baseDir === 'dist_docs' || (util.isArray(baseDir) && baseDir.indexOf('dist_docs') !== -1);
+  var isDoc = baseDir === '.tmp_docs' || (util.isArray(baseDir) && baseDir.indexOf('.tmp_docs') !== -1);
   if(isDebug){
     routes = {
       // Should be '/bower_components': '../bower_components'
@@ -26,7 +26,7 @@ function browserSyncInit(baseDir, files, browser) {
 			'/bower_components': 'docs/bower_components'
     };
 
-		forwardIndexPrefix = require('../dist_docs/js/area-data');
+		forwardIndexPrefix = require('../.tmp_docs/js/area-data');
 		middleware.push(function(req, res, next){
 			forwardIndexPrefix.forEach(function(area){
 				if(req.url === '/' + area || req.url.indexOf('/' + area + '/') === 0){
@@ -69,9 +69,9 @@ gulp.task('bs:relaod', [], function(){
 
 gulp.task('serve:docs', ['dgeni', 'wiredep:docs'], function(){
 	browserSyncInit([
-		'dist_docs',
+		'.tmp_docs',
 		'docs/app'
-	], ['dist_docs/**/*', 'docs/app/*.html', 'docs/app/src/**/*']);
+	], ['.tmp_docs/**/*', 'docs/app/*.html', 'docs/app/src/**/*']);
 });
 
 gulp.task('serve:dist', ['build'], function () {

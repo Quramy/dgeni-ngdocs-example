@@ -42,7 +42,7 @@ module.exports = new Package('dgeni-ngdoc-example', [
   //templateFinder.templatePatterns.unshift('common.template.html');
 
   // Specify where the writeFilesProcessor will write our generated doc files
-  writeFilesProcessor.outputFolder  = 'dist_docs';
+  writeFilesProcessor.outputFolder  = '.tmp_docs';
 })
 
 .config(function(computePathsProcessor, computeIdsProcessor){

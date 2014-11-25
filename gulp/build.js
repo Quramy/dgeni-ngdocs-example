@@ -89,7 +89,7 @@ gulp.task('misc', function () {
 });
 
 gulp.task('clean', function (done) {
-  $.del(['.tmp', 'dist', 'dist_docs'], done);
+  $.del(['.tmp', '.tmp_docs', 'dist', 'dist_docs'], done);
 });
 
 gulp.task('build', ['html', 'images', 'fonts', 'misc']);

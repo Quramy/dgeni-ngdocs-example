@@ -8,13 +8,13 @@ var $ = require('gulp-load-plugins')({
 gulp.task('build:script_docs', [], function(){
 	return gulp.src(['src/app/index.js', 'src/**/*.js'])
 		.pipe($.concat('dgeniNgdocExample.js'))
-		.pipe(gulp.dest('dist_docs'))
+		.pipe(gulp.dest('.tmp_docs'))
 		;
 });
 
 gulp.task('dgeni', ['build:script_docs'], function() {
   try {
-    var dgeni = new Dgeni([require('../docs/config/config')]);
+    var dgeni = new Dgeni([require('../docs/config/')]);
     return dgeni.generate();
   } catch(x) {
     console.log(x.stack);
