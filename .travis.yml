@@ -10,10 +10,7 @@ before_script:
   - pushd docs
   - bower install
   - popd ..
-  - git clone --quiet https://github.com/Quramy/dgeni-ngdocs-example.git dist_docs
-  - pushd dist_docs
-  - git checkout -b gh-pages
-  - popd
+  - git clone --quiet -b gh-pages https://github.com/Quramy/dgeni-ngdocs-example.git dist_docs
 
 script:
   - gulp build:docs
