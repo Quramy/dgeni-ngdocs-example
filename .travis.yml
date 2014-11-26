@@ -22,7 +22,7 @@ after_script:
   - pushd dist_docs
   - git add -A
   - git commit -m "UPDATE DOCS."
-  - '[ "$TRAVIS_BRANCH" == "master" ] && [ "$GH_TOKEN" ] && git push --quiet https://$GH_TOKEN@github.com/dgeni-ngdocs-example.git gh-pages > /dev/null'
+  - '[ "$TRAVIS_BRANCH" == "master" ] && [ "$GH_TOKEN" ] && git push --quiet https://$GH_TOKEN@github.com/Quramy/dgeni-ngdocs-example.git gh-pages > /dev/null'
 
 notifications:
   emails:
@@ -31,4 +31,5 @@ notifications:
 env:
   global:
     - secure: "RhMBCzA8fmNljqCAHasvi9FCxgf/WdJqciJ+e77bO3jAbv0GuJSP2aG55CpuWy1yUhqJC0+mPNApQG0RnVHxNoUpOApk1JlorOxaCQe97ZhC96QWDwwPkYq+HcHhlQYK3OwoHTZ3Qc7d46N/YXLvQiD5jz12wi2QekOn4o1PQjM="
+    - secure: "YQXTGTYI8klqK983hFvgclgE4CGeGFzuGCDRAU3AY5P7SPM37iTujP6VL82qa6yyo5hjdi/g9JkL86PTaSIHO/dfdIqEzHVRUR6WrMDQnRF9+RJliggqmctLx/8+UoFqux6wLkYQzu0iL91PeWtWOHKC7AYaj0k6r2kIAv0fzKo="
 
