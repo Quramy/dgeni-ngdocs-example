@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('dgeniNgdocExampleDocs').controller('DocsCtrl', function($scope, $rootScope, $location, $anchorScroll, DOCS_NAVIGATION, DOCS_OVERWRITELINK){
+angular.module('dgeniNgdocExampleDocs').controller('DocsCtrl', function($scope, $rootScope, $location, $anchorScroll, DOCS_NAVIGATION){
 	var docs = this;
 	var basePath = '/';
 
@@ -25,13 +25,14 @@ angular.module('dgeniNgdocExampleDocs').controller('DocsCtrl', function($scope, 
 		docs.currentArea = DOCS_NAVIGATION[area];
 
 		if(newPath === '' || newPath === 'index.html'){
-			docs.partialPath= 'index.html';
-		}else{
-			if(!newPath.match(/\.html$/)){
-				newPath = newPath + '.html';
-			}
+			newPath = 'index';
+		}
+		if(!newPath.match(/\.html$/)){
+			newPath = newPath + '.html';
 		}
 		newPath = 'partials/' + newPath;
+
+		//console.log(newPath, hash);
 
 		docs.currentHash = hash;
 		docs.partialPath = newPath;
@@ -43,13 +44,7 @@ angular.module('dgeniNgdocExampleDocs').controller('DocsCtrl', function($scope, 
 	});
 
 	$rootScope.$on('$locationChangeStart', function(e, arg){
-		var pathFragment;
-		if(DOCS_OVERWRITELINK){
-			pathFragment = $location.hash() !== '' ? $location.hash().replace(/^\+/, '').split('#') : ['index'];
-			$rootScope.$broadcast('changePath', pathFragment[0], pathFragment[1]);
-		}else{
-			$rootScope.$broadcast('changePath', $location.path(), $location.hash());
-		}
+		$rootScope.$broadcast('changePath', $location.path(), $location.hash());
 	});
 
 });
