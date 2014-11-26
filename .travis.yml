@@ -5,12 +5,21 @@ before_script:
   - npm install -g bower
   - npm install -g gulp
   - bower install
-  - cd docs
+  - pushd docs
   - bower install
-  - cd ..
+  - popd ..
+  - git clone --quiet https://github.com/Quramy/dgeni-ngdocs-example.git dist_docs
+  - pushd dist_docs
+  - git checkout -b gh-pages
+  - popd
 
 script:
   - gulp build:docs
+
+after_script:
+  - pushd dist_docs
+  - git add -A
+  - git commit -m "UPDATE DOCS."
 
 notifications:
   emails:
