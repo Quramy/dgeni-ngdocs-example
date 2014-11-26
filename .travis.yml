@@ -1,4 +1,13 @@
 
+env:
+  global:
+    - GIT_COMMITTER_NAME=y-kurami
+    - GIT_COMMITTER_EMAIL=yosuke.kurami@gmail.com
+    - GIT_AUTHOR_NAME=Quramy
+    - GIT_AUTHOR_EMAIL=yosuke.kurami@gmail.com
+    - secure: "RhMBCzA8fmNljqCAHasvi9FCxgf/WdJqciJ+e77bO3jAbv0GuJSP2aG55CpuWy1yUhqJC0+mPNApQG0RnVHxNoUpOApk1JlorOxaCQe97ZhC96QWDwwPkYq+HcHhlQYK3OwoHTZ3Qc7d46N/YXLvQiD5jz12wi2QekOn4o1PQjM="
+    - secure: "YQXTGTYI8klqK983hFvgclgE4CGeGFzuGCDRAU3AY5P7SPM37iTujP6VL82qa6yyo5hjdi/g9JkL86PTaSIHO/dfdIqEzHVRUR6WrMDQnRF9+RJliggqmctLx/8+UoFqux6wLkYQzu0iL91PeWtWOHKC7AYaj0k6r2kIAv0fzKo="
+
 language: node_js
 node_js:
   - "0.10"
@@ -24,9 +33,4 @@ after_script:
 notifications:
   emails:
     - yosuke.kurami@gmail.com
-
-env:
-  global:
-    - secure: "RhMBCzA8fmNljqCAHasvi9FCxgf/WdJqciJ+e77bO3jAbv0GuJSP2aG55CpuWy1yUhqJC0+mPNApQG0RnVHxNoUpOApk1JlorOxaCQe97ZhC96QWDwwPkYq+HcHhlQYK3OwoHTZ3Qc7d46N/YXLvQiD5jz12wi2QekOn4o1PQjM="
-    - secure: "YQXTGTYI8klqK983hFvgclgE4CGeGFzuGCDRAU3AY5P7SPM37iTujP6VL82qa6yyo5hjdi/g9JkL86PTaSIHO/dfdIqEzHVRUR6WrMDQnRF9+RJliggqmctLx/8+UoFqux6wLkYQzu0iL91PeWtWOHKC7AYaj0k6r2kIAv0fzKo="
 
