@@ -23,24 +23,45 @@ gulp serve:docs:dist
 ## Gulp tasks
 
 ### `dgeni`
+
+```sh
+gulp dgeni
+```
+
 Run Dgeni to build ngdoc.
 
 ### `serve:docs`
+
+```sh
+gulp serve:docs
+```
+
 Run ngdoc app in browserSync.
 
 This task watches `dgeni` task's destination directory, so:
 
-+ Run `serve:docs`.
++ Run `gulp serve:docs`.
 + Modify your component.
-+ Run `dgeni` task (manually).
++ Run `gulp dgeni` task (manually).
 + Ngdoc app changes Immediately by browserSync's reload. 
 
 ### `build:docs`
-Pacaging ngdoc app to `dist_docs`.
+
+```sh
+gulp build:docs
+```
+
+Pacaging ngdoc app to `dist_docs` directory.
 
 ### `serve:docs:dist`
-Run browserSync, and serve `serve:docs` result.
+
+```sh
+gulp serve:docs:dist
+```
+
+Run browserSync, and serve `build:docs` task's result.
 
 
+### Other tasks
 And you can also use gulp tasks [generator-gulp-angular](https://github.com/Swiip/generator-gulp-angular).
 
