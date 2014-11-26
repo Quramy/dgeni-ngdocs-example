@@ -1,1 +1,1 @@
-angular.module('dgeniNgdocExampleDocs').value('DOCS_NAVIGATION', {$ doc.areas | json $});
+angular.module('docApp').value('DOCS_NAVIGATION', {$ doc.areas | json $});

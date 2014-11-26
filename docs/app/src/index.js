@@ -2,7 +2,7 @@
 
 var DOCS_OVERWRITELINK = true;
 
-angular.module('dgeniNgdocExampleDocs', [])
+angular.module('docApp', [])
 .constant('DOCS_OVERWRITELINK', typeof DOCS_OVERWRITELINK === 'undefined' ? false : DOCS_OVERWRITELINK)
 .provider('DOCS_OVERWRITELINK', function (DOCS_OVERWRITELINK) {
 	return {

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('dgeniNgdocExampleDocs').controller('DocsCtrl', function($scope, $rootScope, $location, $anchorScroll, DOCS_NAVIGATION){
+angular.module('docApp').controller('DocsCtrl', function($scope, $location, DOCS_NAVIGATION){
 	var docs = this;
 	var basePath = '/';
 
@@ -18,7 +18,7 @@ angular.module('dgeniNgdocExampleDocs').controller('DocsCtrl', function($scope, 
 	};
 
 	docs.changeCurrent = function(newPath, hash){
-		var area
+		var area;
 		docs.currentPath = newPath;
 		newPath = newPath.replace(new RegExp('^' + basePath), '');
 		area = newPath.split('/')[0];
@@ -39,12 +39,8 @@ angular.module('dgeniNgdocExampleDocs').controller('DocsCtrl', function($scope, 
 
 	};
 
-  $scope.$on('changePath', function(e, path, hash){
-		docs.changeCurrent(path, hash);
-	});
-
-	$rootScope.$on('$locationChangeStart', function(e, arg){
-		$rootScope.$broadcast('changePath', $location.path(), $location.hash());
+	$scope.$on('$locationChangeStart', function(e, arg){
+		docs.changeCurrent($location.path(), $location.hash());
 	});
 
 });

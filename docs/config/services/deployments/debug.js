@@ -9,7 +9,7 @@ module.exports = function debugDeployment() {
 					'../../deps/jquery/dist/jquery.js',
 					'../../deps/angular/angular.js',
 					'../../deps/angular-route/angular-route.js',
-					'../../dgeniNgdocExample.js'
+					'../../modules.js'
 				],
 				stylesheets: []
 			},

@@ -8,7 +8,7 @@ var $ = require('gulp-load-plugins')({
 gulp.task('build:script_docs', [], function(){
 	return gulp.src(['src/app/index.js', 'src/**/*.js'])
 		.pipe($.ngAnnotate())
-		.pipe($.concat('dgeniNgdocExample.js'))
+		.pipe($.concat('modules.js'))
 		.pipe(gulp.dest('.tmp_docs'))
 		.pipe($.size());
 });
@@ -46,7 +46,7 @@ gulp.task('partials:docs', ['dgeni'], function () {
 			quotes: true
 		}))
     .pipe($.ngHtml2js({
-      moduleName: 'dgeniNgdocExampleDocs'
+      moduleName: 'docApp'
     }))
 		.pipe(gulp.dest('.tmp_docs/partials'))
 		.pipe($.size());
@@ -62,12 +62,14 @@ gulp.task('html:docs', ['wiredep:docs', 'partials:docs'], function(){
       addRootSlash: false,
       addPrefix: '../'
     }))
+		/*
 		.pipe($.inject(gulp.src('docs/app/env_*.js'), {
       read: false,
       starttag: '<!-- inject:env -->',
       addRootSlash: false,
       addPrefix: '../../'
 		}))
+		*/
     .pipe(assets = $.useref.assets())
     .pipe(jsFilter)
     .pipe($.ngAnnotate())

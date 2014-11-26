@@ -9,7 +9,7 @@ module.exports = function defaultDeployment() {
 					'../../deps/jquery/dist/jquery.min.js',
 					'../../deps/angular/angular.min.js',
 					'../../deps/angular-route/angular-route.min.js',
-					'../../dgeniNgdocExample.js'
+					'../../modules.js'
 				],
 				stylesheets: []
 			},

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('dgeniNgdocExampleDocs').directive('pre', function(){
+angular.module('docApp').directive('pre', function(){
 	return {
 		restrict: 'E',
 		link: function($scope, $elem, $attrs){
