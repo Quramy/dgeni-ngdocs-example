@@ -1,6 +1,8 @@
+
 language: node_js
 node_js:
   - "0.10"
+
 before_script:
   - npm install -g bower
   - npm install -g gulp
@@ -20,7 +22,13 @@ after_script:
   - pushd dist_docs
   - git add -A
   - git commit -m "UPDATE DOCS."
+  - '[ "$TRAVIS_BRANCH" == "master" ] && [ "$GH_TOKEN" ] && git push --quiet https://$GH_TOKEN@github.com/dgeni-ngdocs-example.git gh-pages > /dev/null'
 
 notifications:
   emails:
     - yosuke.kurami@gmail.com
+
+env:
+  global:
+    - secure: "RhMBCzA8fmNljqCAHasvi9FCxgf/WdJqciJ+e77bO3jAbv0GuJSP2aG55CpuWy1yUhqJC0+mPNApQG0RnVHxNoUpOApk1JlorOxaCQe97ZhC96QWDwwPkYq+HcHhlQYK3OwoHTZ3Qc7d46N/YXLvQiD5jz12wi2QekOn4o1PQjM="
+
