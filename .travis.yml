@@ -5,9 +5,12 @@ before_script:
   - npm install -g bower
   - npm install -g gulp
   - bower install
+  - cd docs
+  - bower install
+  - cd ..
 
 script:
-  - gulp build
+  - gulp build:docs
 
 notifications:
   emails:
