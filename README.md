@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Quramy/dgeni-ngdocs-example.svg?branch=master)](https://travis-ci.org/Quramy/dgeni-ngdocs-example)
+
 # dgeniNgdocExample
 
 A sample application with ngDoc.
