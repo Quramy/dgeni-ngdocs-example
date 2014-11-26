@@ -16,16 +16,16 @@ before_script:
   - npm install -g bower
   - npm install -g gulp
   - bower install
-  - pushd docs
+  - cd docs
   - bower install
-  - popd ..
+  - cd ..
   - git clone --quiet -b gh-pages https://github.com/Quramy/dgeni-ngdocs-example.git dist_docs
 
 script:
   - gulp build:docs
 
 after_script:
-  - pushd dist_docs
+  - cd dist_docs
   - git add -A
   - git commit -m "UPDATE DOCS."
   - '[ "$TRAVIS_BRANCH" == "master" ] && [ "$GH_TOKEN" ] && git push --quiet https://$GH_TOKEN@github.com/Quramy/dgeni-ngdocs-example.git gh-pages > /dev/null'
