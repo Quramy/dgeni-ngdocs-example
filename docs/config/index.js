@@ -46,6 +46,17 @@ module.exports = new Package('dgeni-ngdoc-example', [
   // Specify where the writeFilesProcessor will write our generated doc files
   writeFilesProcessor.outputFolder  = '.tmp_docs';
 })
+.config(function(renderDocsProcessor){
+	renderDocsProcessor.extraData.git = {
+		info: {
+			owner: 'Quramy',
+		 	repo: 'dgeni-ngdocs-example'
+		},
+		version: {
+			isSnapshot: true
+		}
+	};
+})
 
 .config(function(computePathsProcessor, computeIdsProcessor){
 

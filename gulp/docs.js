@@ -13,7 +13,7 @@ gulp.task('build:script_docs', [], function(){
 		.pipe($.size());
 });
 
-gulp.task('dgeni', ['build:script_docs'], function() {
+gulp.task('dgeni', function() {
   try {
     var dgeni = new Dgeni([require('../docs/config/')]);
     return dgeni.generate();
@@ -98,5 +98,5 @@ gulp.task('fonts:docs', function () {
     .pipe($.size());
 });
 
-gulp.task('build:docs', ['html:docs', 'fonts:docs', 'examples:docs', 'deps_examples:docs']);
+gulp.task('build:docs', ['build:script_docs', 'html:docs', 'fonts:docs', 'examples:docs', 'deps_examples:docs']);
 

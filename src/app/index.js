@@ -1,9 +1,11 @@
 'use strict';
 
 /**
+ *
  * @ngdoc module
  * @name dgeniNgdocExample
  * @module dgeniNgdocExample
+ * @packageName dgeni-ngcod-example
  * @description
  *
  * This is a ngdoc example application module.

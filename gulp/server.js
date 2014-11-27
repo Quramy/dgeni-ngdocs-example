@@ -34,6 +34,7 @@ function browserSyncInit(baseDir, files, browser) {
 
 		// The following proxy routes a request that has url start with Area prefix to '/index.html',
 		// because we need a correct view when browserSync.reload() is invoked after changing $location.path() .
+		/*
 		middleware.push(function(req, res, next){
 			forwardIndexPrefix.forEach(function(area){
 				if(req.url === '/' + area || req.url.indexOf('/' + area + '/') === 0){
@@ -42,6 +43,7 @@ function browserSyncInit(baseDir, files, browser) {
 			});
 			next();
 		});
+	  */
 	}
 
 
@@ -73,10 +75,9 @@ gulp.task('serve', ['watch'], function () {
 
 /* add by Quramy */
 gulp.task('serve:docs', ['dgeni', 'wiredep:docs'], function(){
-	browserSyncInit([
-		'.tmp_docs',
-		'docs/app'
-	], ['.tmp_docs/**/*', 'docs/app/*.html', 'docs/app/src/**/*']);
+	browserSyncInit(['.tmp_docs', 'docs/app'], ['docs/app/*.html', 'docs/app/src/**/*']);
+	gulp.watch(['docs/config/**/*', 'docs/content/**/*', 'src/{app,components}/**/*.js'], ['dgeni', browserSync.reload]);
+	gulp.watch(['src/{app,components}/**/*.js'], ['build:script_docs']);
 });
 
 gulp.task('serve:docs:dist', ['build:docs'], function(){
