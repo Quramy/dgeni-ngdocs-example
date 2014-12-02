@@ -5,7 +5,7 @@
  * @ngdoc module
  * @name dgeniNgdocExample
  * @module dgeniNgdocExample
- * @packageName dgeni-ngcod-example
+ * @packageName dgeni-ngdoc-example
  * @description
  *
  * This is a ngdoc example application module.
