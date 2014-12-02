@@ -7,15 +7,18 @@
     {%- for attrName, attrValue in doc.example.attributes %}
     {$ attrName $}="{$ attrValue $}"{% endfor %}>
 
- {% for fileName, file in doc.example.files %}
-  <div class="runnable-example-file" {% for attrName, attrValue in file.attributes %}
-    {$ attrName $}="{$ attrValue $}"{% endfor %}>
-    {% code -%}
-    {$ file.fileContents $}
-    {%- endcode %}
-  </div>
-{% endfor %}
-
+  <tabset>
+    {% for fileName, file in doc.example.files %}
+    <tab heading="{$ file.name $}">
+      <div class="runnable-example-file" {% for attrName, attrValue in file.attributes %}
+          $ attrName $}="{$ attrValue $}"{% endfor %}>
+        {% code -%}
+        {$ file.fileContents $}
+        {%- endcode %}
+      </div>
+    </tab>
+    {% endfor %}
+  </tabset>
   <iframe class="runnable-example-frame" src="{$ doc.example.deployments[deploymentTarget].outputPath $}" name="{$ doc.example.id $}"></iframe>
 </div>
 
