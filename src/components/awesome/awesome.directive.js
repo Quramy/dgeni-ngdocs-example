@@ -28,6 +28,6 @@
 angular.module('dgeniNgdocExample').directive('awesome', function(){
 	return{
 		restrict: 'E',
-		template: '<div>This is an Awesome!</div>'
+		template: '<div class="awesome">This is an Awesome!</div>'
 	};
 });

@@ -14,6 +14,8 @@ module.exports = new Package('dgeni-ngdoc-example', [
 
 .factory(require('./services/deployments/debug'))
 .factory(require('./services/deployments/default'))
+.factory(require('./services/deployments/prod'))
+
 .processor(require('./processors/navigation'))
 
 // Configure our dgeni-example package. We can ask the Dgeni dependency injector
@@ -27,14 +29,14 @@ module.exports = new Package('dgeni-ngdoc-example', [
   readFilesProcessor.basePath = path.resolve(__dirname, '../..');
 
   // Specify collections of source files that should contain the documentation to extract
-  readFilesProcessor.sourceFiles = [
-    {
+  readFilesProcessor.sourceFiles = [{
       include: 'src/**/*.js',
       //exclude: 'src/do-not-read.js',
       basePath: 'src'
-    },
-    { include: 'docs/content/**/*.ngdoc', basePath: 'docs/content' }
-  ];
+    }, {
+      include: 'docs/content/**/*.ngdoc',
+      basePath: 'docs/content'
+    }];
 
   // Add a folder to search for our own templates to use when rendering docs
   templateFinder.templateFolders.unshift(path.resolve(__dirname, 'templates'));
@@ -46,7 +48,7 @@ module.exports = new Package('dgeni-ngdoc-example', [
   // Specify where the writeFilesProcessor will write our generated doc files
   writeFilesProcessor.outputFolder  = '.tmp_docs';
 })
-.config(function (renderDocsProcessor){
+.config(function (renderDocsProcessor) {
   renderDocsProcessor.extraData.git = {
     info: {
       owner: 'Quramy',
@@ -58,7 +60,7 @@ module.exports = new Package('dgeni-ngdoc-example', [
   };
 })
 
-.config(function (computePathsProcessor, computeIdsProcessor){
+.config(function (computePathsProcessor, computeIdsProcessor) {
 
   computePathsProcessor.pathTemplates.push({
     docTypes: ['module'],
@@ -70,14 +72,13 @@ module.exports = new Package('dgeni-ngdoc-example', [
 
   computePathsProcessor.pathTemplates.push({
     docTypes: ['overview'],
-    getPath: function (doc){
+    getPath: function (doc) {
       var docPath = path.dirname(doc.fileInfo.relativePath);
       if ( doc.fileInfo.baseName !== 'index' ) {
         docPath = path.join(docPath, doc.fileInfo.baseName);
       }else{
         return 'index';
       }
-      //console.log(docPath);
       return docPath;
     },
     outputPathTemplate: 'partials/${path}.html'
@@ -91,18 +92,17 @@ module.exports = new Package('dgeni-ngdoc-example', [
 
   computeIdsProcessor.idTemplates.push({
     docTypes: ['overview'],
-    getId: function (doc){
-      //console.log(doc);
+    getId: function (doc) {
       return doc.fileInfo.baseName;
     },
-    getAliases: function (doc){
+    getAliases: function (doc) {
       return [doc.id];
     }
   });
 })
 
-.config(function (generateExamplesProcessor, generateProtractorTestsProcessor, defaultDeployment, debugDeployment) {
-  var deployments = [debugDeployment, defaultDeployment];
+.config(function (generateExamplesProcessor, generateProtractorTestsProcessor, defaultDeployment, debugDeployment, prodDeployment) {
+  var deployments = [debugDeployment, defaultDeployment, prodDeployment];
   generateExamplesProcessor.deployments = deployments;
   generateProtractorTestsProcessor.deployments = deployments;
 });

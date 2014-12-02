@@ -1,26 +1,7 @@
 var gulp = require('gulp');
-var Dgeni = require('dgeni');
 
 var $ = require('gulp-load-plugins')({
   pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'del']
-});
-
-gulp.task('build:script_docs', [], function(){
-	return gulp.src(['src/app/index.js', 'src/**/*.js'])
-		.pipe($.ngAnnotate())
-		.pipe($.concat('modules.js'))
-		.pipe(gulp.dest('.tmp_docs'))
-		.pipe($.size());
-});
-
-gulp.task('dgeni', function() {
-  try {
-    var dgeni = new Dgeni([require('../docs/config/')]);
-    return dgeni.generate();
-  } catch(x) {
-    console.log(x.stack);
-    throw x;
-  }
 });
 
 gulp.task('deps_examples:docs', function () {
@@ -38,7 +19,7 @@ gulp.task('deps_examples:docs', function () {
 		.pipe($.size());
 });
 
-gulp.task('partials:docs', ['dgeni'], function () {
+gulp.task('partials:docs', ['dgeni:prod'], function () {
 	return gulp.src(['docs/app/{src,.tmp}/**/*.html', '.tmp_docs/{partials,.tmp}/**/*.html'])
 		.pipe($.minifyHtml({
 			empty: true,
@@ -81,7 +62,7 @@ gulp.task('html:docs', ['wiredep:docs', 'partials:docs'], function(){
 		.pipe($.size());
 });
 
-gulp.task('examples:docs', ['dgeni'], function(){
+gulp.task('examples:docs', ['dgeni:prod'], function(){
 	return gulp.src(['.tmp_docs/{*.js,examples/**/*}'])
 		.pipe(gulp.dest('dist_docs'))
 		.pipe($.size());
@@ -98,5 +79,5 @@ gulp.task('fonts:docs', function () {
     .pipe($.size());
 });
 
-gulp.task('build:docs', ['build:script_docs', 'html:docs', 'fonts:docs', 'examples:docs', 'deps_examples:docs']);
+gulp.task('build:docs', ['module:dist', 'html:docs', 'fonts:docs', 'examples:docs', 'deps_examples:docs']);
 

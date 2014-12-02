@@ -74,10 +74,10 @@ gulp.task('serve', ['watch'], function () {
 
 
 /* add by Quramy */
-gulp.task('serve:docs', ['dgeni', 'wiredep:docs'], function(){
+gulp.task('serve:docs', ['dgeni', 'wiredep:docs', 'module'], function(){
 	browserSyncInit(['.tmp_docs', 'docs/app'], ['docs/app/*.html', 'docs/app/src/**/*']);
-	gulp.watch(['docs/config/**/*', 'docs/content/**/*', 'src/{app,components}/**/*.js'], ['dgeni', browserSync.reload]);
-	gulp.watch(['src/{app,components}/**/*.js'], ['build:script_docs']);
+	gulp.watch(['docs/config/templates/**/*', 'docs/content/**/*', 'src/{app,components}/**/*.js'], ['dgeni', browserSync.reload]);
+	gulp.watch(['src/{app,components}/**/*.js'], ['module']);
 });
 
 gulp.task('serve:docs:dist', ['build:docs'], function(){

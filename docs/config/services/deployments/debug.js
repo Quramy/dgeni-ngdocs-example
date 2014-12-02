@@ -11,7 +11,9 @@ module.exports = function debugDeployment() {
 					'../../deps/angular-route/angular-route.js',
 					'../../modules.js'
 				],
-				stylesheets: []
+				stylesheets: [
+					'../../modules.css'
+        ]
 			},
 			dependencyPath: '../../deps'
 		}

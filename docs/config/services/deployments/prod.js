@@ -1,8 +1,8 @@
 'use strict';
 
-module.exports = function defaultDeployment() {
+module.exports = function prodDeployment() {
 	return {
-		name: 'default',
+		name: 'prod',
 		examples: {
 			commonFiles: {
 				scripts: [
