@@ -4,21 +4,6 @@ var $ = require('gulp-load-plugins')({
   pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'del']
 });
 
-gulp.task('deps_examples:docs', function () {
-	var deployment = require('../docs/config/services/deployments/default')();
-	var depPath = deployment.examples.dependencyPath;
-	var scripts = deployment.examples.commonFiles.scripts || [];
-	var deps = scripts.filter(function(it){
-		return it.match(depPath)
-	}).map(function(it){
-		return it.replace(depPath, 'bower_components');
-	});
-
-	return gulp.src(deps, {base: 'bower_components'})
-		.pipe(gulp.dest('dist_docs/deps'))
-		.pipe($.size());
-});
-
 gulp.task('partials:docs', ['dgeni:prod'], function () {
 	return gulp.src(['docs/app/{src,.tmp}/**/*.html', '.tmp_docs/{partials,.tmp}/**/*.html'])
 		.pipe($.minifyHtml({
@@ -79,5 +64,5 @@ gulp.task('fonts:docs', function () {
     .pipe($.size());
 });
 
-gulp.task('build:docs', ['module:dist', 'html:docs', 'fonts:docs', 'examples:docs', 'deps_examples:docs']);
+gulp.task('build:docs', ['module:dist', 'html:docs', 'fonts:docs', 'examples:docs', 'copy_dependencies:examples']);
 

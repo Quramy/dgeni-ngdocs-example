@@ -8,7 +8,6 @@ module.exports = function debugDeployment() {
 				scripts: [
 					'../../deps/jquery/dist/jquery.js',
 					'../../deps/angular/angular.js',
-					'../../deps/angular-route/angular-route.js',
 					'../../modules.js'
 				],
 				stylesheets: [
