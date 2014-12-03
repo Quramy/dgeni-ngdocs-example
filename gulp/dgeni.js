@@ -46,3 +46,55 @@ gulp.task('copy_dependencies:examples', function () {
 		.pipe($.size());
 });
 
+
+gulp.task('hoge', function () {
+  var path = require('canonical-path');
+  var _ = require('lodash');
+  var mainBowerFiles = require('main-bower-files');
+
+  var main = mainBowerFiles({
+    bowerJson: require('../bower.json')
+  });
+
+  var options = {
+    base: '../../../../deps',
+    exclude: [/bootstrap/]
+  };
+
+  var scripts = [], stylesheets = [];
+  var bowerDir = path.normalize(__dirname + '/../bower_components');
+  //console.log(path.normalize(__dirname + '/../bower_components'));
+  var aaa =_(main).map(function(file){
+    return relativepath = path.relative(bowerDir, path.normalize(file))
+  }).filter(function(file){
+    var res = false;
+    _.forEach(options.exclude, function(pattern){
+      //console.log(file, pattern, file.match(pattern), pattern.test(file));
+      res = res || file.match(pattern);
+    });
+    return !res;
+  }).map(function(file){
+    return {
+      ext: path.extname(file),
+      relativepath: file
+    }
+  });
+
+  console.log(aaa);
+  _(main).forEach(function(file){
+    var ext = path.extname(file);
+    var relativepath = path.relative(bowerDir, path.normalize(file))
+
+    relativepath = options.base + '/' + relativepath;
+    if(ext === '.js'){
+      scripts.push[relativepath];
+      console.log(relativepath);
+    }else if(ext === '.css'){
+      stylesheets.push[relativepath];
+    }
+  });
+  console.log(scripts);
+  console.log(stylesheets);
+
+
+});

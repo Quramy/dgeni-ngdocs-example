@@ -74,6 +74,7 @@ gulp.task('serve', ['watch'], function () {
 
 
 /* add by Quramy */
+
 gulp.task('serve:docs', ['dgeni', 'wiredep:docs', 'module'], function(){
 	browserSyncInit(['.tmp_docs', 'docs/app'], ['docs/app/*.html', 'docs/app/src/**/*']);
 	gulp.watch(['docs/config/templates/**/*', 'docs/content/**/*', 'src/{app,components}/**/*.js'], ['dgeni', browserSync.reload]);
