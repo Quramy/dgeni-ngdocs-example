@@ -4,7 +4,7 @@ var $ = require('gulp-load-plugins')({
   pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'del']
 });
 
-gulp.task('partials:docs', ['dgeni:prod'], function () {
+gulp.task('partials:docs', ['dgeni'], function () {
 	return gulp.src(['docs/app/{src,.tmp}/**/*.html', '.tmp_docs/{partials,.tmp}/**/*.html'])
 		.pipe($.minifyHtml({
 			empty: true,
@@ -47,7 +47,7 @@ gulp.task('html:docs', ['wiredep:docs', 'partials:docs'], function(){
 		.pipe($.size());
 });
 
-gulp.task('examples:docs', ['dgeni:prod'], function(){
+gulp.task('examples:docs', ['dgeni'], function(){
 	return gulp.src(['.tmp_docs/{*.js,examples/**/*}'])
 		.pipe(gulp.dest('dist_docs'))
 		.pipe($.size());
