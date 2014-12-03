@@ -1,6 +1,5 @@
-[![Build Status](https://travis-ci.org/Quramy/dgeni-ngdocs-example.svg?branch=master)](https://travis-ci.org/Quramy/dgeni-ngdocs-example)
-
 # dgeniNgdocExample
+[![Build Status](https://travis-ci.org/Quramy/dgeni-ngdocs-example.svg?branch=master)](https://travis-ci.org/Quramy/dgeni-ngdocs-example)
 
 A sample application with ngDoc.
 
@@ -30,7 +29,7 @@ gulp serve:docs:dist
 gulp dgeni
 ```
 
-Run Dgeni to build ngdoc.
+Run Dgeni to perse ngdoc comments in your scripts and write to htmls.
 
 ### `serve:docs`
 
@@ -44,7 +43,6 @@ This task watches `dgeni` task's destination directory, so:
 
 + Run `gulp serve:docs`.
 + Modify your component.
-+ Run `gulp dgeni` task (manually).
 + Ngdoc app changes Immediately by browserSync's reload. 
 
 ### `build:docs`
