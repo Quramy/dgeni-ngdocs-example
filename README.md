@@ -1,4 +1,6 @@
 # dgeniNgdocExample
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/Quramy/dgeni-ngdocs-example.svg)](https://greenkeeper.io/)
 [![Build Status](https://travis-ci.org/Quramy/dgeni-ngdocs-example.svg?branch=master)](https://travis-ci.org/Quramy/dgeni-ngdocs-example)
 
 A sample application with ngDoc.
